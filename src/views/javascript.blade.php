@@ -61,15 +61,16 @@
         height: '{{ $options['chart_height'] ?? "300px" }}',
         @if ($options['chart_type'] != 'pie')
             scales: {
-                xAxes: [],
-                yAxes: [{
+                xAxes: {'display': false},
+                yAxes: {
                     ticks: {
                         beginAtZero:true
                     },
                     @if($options['chart_type'] == 'bar' && isset($options['stacked']) && $options['stacked'] == true)
-                        stacked: true
+                    stacked: true,
                     @endif
-                }]
+                    display: false
+                },
             },
         @endif
     }
